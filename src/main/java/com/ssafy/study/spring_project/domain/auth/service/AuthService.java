@@ -1,8 +1,8 @@
-package com.ssafy.study.spring_project.domain.service;
+package com.ssafy.study.spring_project.domain.auth.service;
 
-import com.ssafy.study.spring_project.domain.component.SessionManager;
-import com.ssafy.study.spring_project.domain.controller.dto.LoginRequest;
-import com.ssafy.study.spring_project.domain.controller.dto.LoginResponse;
+import com.ssafy.study.spring_project.domain.auth.component.SessionManager;
+import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginRequest;
+import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginResponse;
 import com.ssafy.study.spring_project.domain.member.entity.MemberEntity;
 import com.ssafy.study.spring_project.domain.member.repository.MemberRepository;
 import com.ssafy.study.spring_project.global.exception.CustomException;

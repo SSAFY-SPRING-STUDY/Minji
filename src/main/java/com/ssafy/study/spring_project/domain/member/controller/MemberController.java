@@ -1,7 +1,7 @@
 package com.ssafy.study.spring_project.domain.member.controller;
 
-import com.ssafy.study.spring_project.domain.component.SessionManager;
-import com.ssafy.study.spring_project.domain.util.AuthTokenUtils;
+import com.ssafy.study.spring_project.domain.auth.component.SessionManager;
+import com.ssafy.study.spring_project.domain.auth.util.AuthTokenUtils;
 import com.ssafy.study.spring_project.domain.member.controller.dto.MemberRequest;
 import com.ssafy.study.spring_project.domain.member.controller.dto.MemberResponse;
 import com.ssafy.study.spring_project.domain.member.service.MemberService;

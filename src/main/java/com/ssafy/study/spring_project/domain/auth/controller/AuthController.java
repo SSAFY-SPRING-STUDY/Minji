@@ -1,9 +1,9 @@
-package com.ssafy.study.spring_project.domain.controller;
+package com.ssafy.study.spring_project.domain.auth.controller;
 
-import com.ssafy.study.spring_project.domain.controller.dto.LoginRequest;
-import com.ssafy.study.spring_project.domain.controller.dto.LoginResponse;
-import com.ssafy.study.spring_project.domain.service.AuthService;
-import com.ssafy.study.spring_project.domain.util.AuthTokenUtils;
+import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginRequest;
+import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginResponse;
+import com.ssafy.study.spring_project.domain.auth.service.AuthService;
+import com.ssafy.study.spring_project.domain.auth.util.AuthTokenUtils;
 import lombok.RequiredArgsConstructor;
 import com.ssafy.study.spring_project.global.exception.CustomException;
 import com.ssafy.study.spring_project.global.exception.error.ErrorCode;

@@ -1,10 +1,10 @@
 package com.ssafy.study.spring_project.domain.post.controller;
 
-import com.ssafy.study.spring_project.domain.component.SessionManager;
+import com.ssafy.study.spring_project.domain.auth.component.SessionManager;
 import com.ssafy.study.spring_project.domain.post.controller.dto.PostRequest;
 import com.ssafy.study.spring_project.domain.post.controller.dto.PostResponse;
 import com.ssafy.study.spring_project.domain.post.service.PostService;
-import com.ssafy.study.spring_project.domain.util.AuthTokenUtils;
+import com.ssafy.study.spring_project.domain.auth.util.AuthTokenUtils;
 import com.ssafy.study.spring_project.global.exception.CustomException;
 import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import com.ssafy.study.spring_project.global.response.ApiResponse;

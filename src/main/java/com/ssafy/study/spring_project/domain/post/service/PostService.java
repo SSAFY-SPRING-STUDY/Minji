@@ -10,6 +10,7 @@ import com.ssafy.study.spring_project.global.exception.CustomException;
 import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +39,7 @@ public class PostService {
         return PostResponse.from(postEntity);
     }
 
+    @Transactional
     public PostResponse update(PostRequest request, Long id, Long authorId) {
         MemberEntity author = memberRepository.findById(authorId)
                 .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));

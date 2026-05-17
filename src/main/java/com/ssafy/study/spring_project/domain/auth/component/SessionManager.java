@@ -1,4 +1,4 @@
-package com.ssafy.study.spring_project.domain.component;
+package com.ssafy.study.spring_project.domain.auth.component;
 
 import com.ssafy.study.spring_project.global.exception.CustomException;
 import com.ssafy.study.spring_project.global.exception.error.ErrorCode;

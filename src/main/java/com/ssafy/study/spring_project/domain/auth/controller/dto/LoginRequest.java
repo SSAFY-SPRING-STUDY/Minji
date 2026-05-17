@@ -1,4 +1,4 @@
-package com.ssafy.study.spring_project.domain.controller.dto;
+package com.ssafy.study.spring_project.domain.auth.controller.dto;
 
 public record LoginRequest(
         String username,
