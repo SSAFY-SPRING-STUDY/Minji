@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class HelloService {
 
     public String hi(){
-        return "하이요";
+        return "Hello Spring Boot!";
     }
 }
