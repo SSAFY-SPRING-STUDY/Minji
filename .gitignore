@@ -38,3 +38,6 @@ out/
 
 ### Environment ###
 .env
+.env.local
+.env.*.local
+mysql_data/
