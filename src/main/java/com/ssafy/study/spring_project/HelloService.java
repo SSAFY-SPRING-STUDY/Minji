@@ -1,6 +1,5 @@
 package com.ssafy.study.spring_project;
 
-import com.ssafy.study.spring_project.member.entity.MemberEntity;
 import org.springframework.stereotype.Service;
 
 @Service

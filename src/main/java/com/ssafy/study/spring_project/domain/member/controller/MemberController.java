@@ -1,14 +1,15 @@
-package com.ssafy.study.spring_project.member.controller;
+package com.ssafy.study.spring_project.domain.member.controller;
 
-import com.ssafy.study.spring_project.domain.auth.component.SessionManager;
-import com.ssafy.study.spring_project.domain.auth.util.AuthTokenUtils;
-import com.ssafy.study.spring_project.member.controller.dto.MemberRequest;
-import com.ssafy.study.spring_project.member.controller.dto.MemberResponse;
-import com.ssafy.study.spring_project.member.service.MemberService;
+import com.ssafy.study.spring_project.domain.component.SessionManager;
+import com.ssafy.study.spring_project.domain.util.AuthTokenUtils;
+import com.ssafy.study.spring_project.domain.member.controller.dto.MemberRequest;
+import com.ssafy.study.spring_project.domain.member.controller.dto.MemberResponse;
+import com.ssafy.study.spring_project.domain.member.service.MemberService;
+import com.ssafy.study.spring_project.global.exception.CustomException;
+import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class MemberController {
     public MemberResponse getMyInfo(@RequestHeader("Authorization") String bearerToken){
         // Bearer 형식이 아니면 세션키를 꺼낼 수 없으므로 401 반환
         if (AuthTokenUtils.isValidBearerToken(bearerToken)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
 
         // 헤더에서 세션키를 꺼낸 뒤, 서버 세션 저장소에서 memberId를 조회

@@ -1,14 +1,14 @@
-package com.ssafy.study.spring_project.domain.auth.service;
+package com.ssafy.study.spring_project.domain.service;
 
-import com.ssafy.study.spring_project.domain.auth.component.SessionManager;
-import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginRequest;
-import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginResponse;
-import com.ssafy.study.spring_project.member.entity.MemberEntity;
-import com.ssafy.study.spring_project.member.repository.MemberRepository;
+import com.ssafy.study.spring_project.domain.component.SessionManager;
+import com.ssafy.study.spring_project.domain.controller.dto.LoginRequest;
+import com.ssafy.study.spring_project.domain.controller.dto.LoginResponse;
+import com.ssafy.study.spring_project.domain.member.entity.MemberEntity;
+import com.ssafy.study.spring_project.domain.member.repository.MemberRepository;
+import com.ssafy.study.spring_project.global.exception.CustomException;
+import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -21,11 +21,11 @@ public class AuthService {
     public LoginResponse login(LoginRequest request){
         // username이 없으면 로그인 실패이므로 401 반환
         MemberEntity entity = memberRepository.findByUsername(request.username())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "아이디 또는 비밀번호가 존재하지 않습니다."));
+                .orElseThrow(() -> new CustomException(ErrorCode.INVALID_USERNAME));
 
         // 비밀번호가 틀려도 같은 401을 반환
         if (!entity.checkPassword(request.password())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "아이디 또는 비밀번호가 존재하지 않습니다.");
+            throw new CustomException(ErrorCode.INVALID_PASSWORD);
         }
 
         // 세션 저장소에 "랜덤 세션키 -> 회원 ID" 형태로 저장하고, 세션키를 응답으로 반환

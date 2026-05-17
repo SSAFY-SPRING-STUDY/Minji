@@ -1,13 +1,13 @@
-package com.ssafy.study.spring_project.member.service;
+package com.ssafy.study.spring_project.domain.member.service;
 
-import com.ssafy.study.spring_project.member.controller.dto.MemberRequest;
-import com.ssafy.study.spring_project.member.controller.dto.MemberResponse;
-import com.ssafy.study.spring_project.member.entity.MemberEntity;
-import com.ssafy.study.spring_project.member.repository.MemberRepository;
+import com.ssafy.study.spring_project.domain.member.controller.dto.MemberRequest;
+import com.ssafy.study.spring_project.domain.member.controller.dto.MemberResponse;
+import com.ssafy.study.spring_project.domain.member.entity.MemberEntity;
+import com.ssafy.study.spring_project.domain.member.repository.MemberRepository;
+import com.ssafy.study.spring_project.global.exception.CustomException;
+import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -26,9 +26,8 @@ public class MemberService {
 
     // 세션에서 얻은 memberId로 회원 정보를 조회한다
     public MemberResponse getMemberInfo(Long memberId){
-        //회원 정보 조회, 없으면 ResponseStatusException(404)
         MemberEntity memberEntity = memberRepository.findById(memberId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "회원 정보를 찾을 수 없습니다."));
+                .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
         return MemberResponse.from(memberEntity);
     }

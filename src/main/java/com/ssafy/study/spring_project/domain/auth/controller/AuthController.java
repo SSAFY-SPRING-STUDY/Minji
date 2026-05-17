@@ -1,17 +1,18 @@
-package com.ssafy.study.spring_project.domain.auth.controller;
+package com.ssafy.study.spring_project.domain.controller;
 
-import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginRequest;
-import com.ssafy.study.spring_project.domain.auth.controller.dto.LoginResponse;
-import com.ssafy.study.spring_project.domain.auth.service.AuthService;
-import com.ssafy.study.spring_project.domain.auth.util.AuthTokenUtils;
+import com.ssafy.study.spring_project.domain.controller.dto.LoginRequest;
+import com.ssafy.study.spring_project.domain.controller.dto.LoginResponse;
+import com.ssafy.study.spring_project.domain.service.AuthService;
+import com.ssafy.study.spring_project.domain.util.AuthTokenUtils;
 import lombok.RequiredArgsConstructor;
+import com.ssafy.study.spring_project.global.exception.CustomException;
+import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,7 +32,7 @@ public class AuthController {
     public void logout(@RequestHeader("Authorization") String bearerToken) {
         // 헤더가 없거나 "Bearer "로 시작하지 않으면 인증 실패
         if (AuthTokenUtils.isValidBearerToken(bearerToken)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
 
         // "Bearer {세션키}"에서 실제 세션키 부분만 분리

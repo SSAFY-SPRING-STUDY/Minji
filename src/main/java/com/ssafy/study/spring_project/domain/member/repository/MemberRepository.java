@@ -1,6 +1,6 @@
-package com.ssafy.study.spring_project.member.repository;
+package com.ssafy.study.spring_project.domain.member.repository;
 
-import com.ssafy.study.spring_project.member.entity.MemberEntity;
+import com.ssafy.study.spring_project.domain.member.entity.MemberEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

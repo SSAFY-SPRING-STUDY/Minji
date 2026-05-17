@@ -1,4 +1,4 @@
-package com.ssafy.study.spring_project.member.entity;
+package com.ssafy.study.spring_project.domain.member.entity;
 
 import lombok.Getter;
 

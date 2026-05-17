@@ -1,8 +1,8 @@
-package com.ssafy.study.spring_project.domain.auth.component;
+package com.ssafy.study.spring_project.domain.component;
 
+import com.ssafy.study.spring_project.global.exception.CustomException;
+import com.ssafy.study.spring_project.global.exception.error.ErrorCode;
 import org.springframework.stereotype.Component;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 import java.util.UUID;
@@ -23,7 +23,7 @@ public class SessionManager {
     // 로그아웃 시 세션키가 유효한지 확인한 뒤 서버 저장소에서 제거
     public void removeSession(String sessionKey) {
         if (!sessionMap.containsKey(sessionKey)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "유효하지 않은 세션입니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
 
         sessionMap.remove(sessionKey);
@@ -33,7 +33,7 @@ public class SessionManager {
     public Long getMemberId(String sessionKey) {
         Long memberId = sessionMap.get(sessionKey);
         if (memberId == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "유효하지 않은 세션입니다.");
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
 
         return memberId;

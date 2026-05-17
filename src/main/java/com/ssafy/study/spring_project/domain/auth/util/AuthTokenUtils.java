@@ -1,4 +1,4 @@
-package com.ssafy.study.spring_project.domain.auth.util;
+package com.ssafy.study.spring_project.domain.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
